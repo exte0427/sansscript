@@ -42,12 +42,12 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
     }
     else if(test(`그럼`)!=0){
         j=test(`그럼`);
-        str="{";
+        str="{\n";
         is="then";
     }
     else if(test(`그래`)!=0){
         j=test(`그래`);
-        str="}";
+        str="\n}";
         is="end";
     }
     else if(test(`\n`)!=0){
@@ -95,6 +95,11 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         str="=";
         is="=";
     }
+    else if(codeList[j]==="은"){
+        j=j+1;
+        str="=";
+        is="=";
+    }
     else if(test(`터어얼렸구나`)!=0){
         j=test(`터어얼렸구나`);
         str="break;";
@@ -102,7 +107,7 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
     }
     else if(test(`의지`)!=0){
         j=test(`의지`);
-        str="return";
+        str="return ";
         is="return";
     }
     else if(test(`몰라요`)!=0){
@@ -113,6 +118,10 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         j=test(`샌즈의`);
         let strs="";
         for(j; codeList[j]!==`하` || codeList[j+1]!==`기`;j++){
+            if(codeList[j]==`값`){
+                j--;
+                break;
+            }
             //console.log(codeList[j]);
             strs+=codeList[j];
         }
@@ -123,6 +132,10 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         j=test(`.`);
         str="\n";
         is="endl";
+    }else if(test(`의`)!=0){
+        j=test(`의`);
+        str=".";
+        is="and";
     }
     //끝
     else{
@@ -150,6 +163,7 @@ const comp=code=>{
         }
     }
     try{
+        console.log(JScode)
         eval(JScode);
     }catch(err){
         console.log(JScode);
@@ -176,11 +190,11 @@ const data=(d:string,a:string):any[]=>{
     for(let i=0;i<t.length;i++){
         const th=t[i].split("<")[0];
         if(str.indexOf(th)!=-1){
-            str=str.replace(th,",");
+            str=str.replace(th,"※");
         }
     }
     const str2=[];
-    str.split(",").map(a=>{if(a!="" && a!=undefined){str2.push(a);}});
+    str.split("※").map(a=>{if(a!="" && a!=undefined){str2.push(a);}});
     let returnStr:string[]=[];
     str2.map(a=>{
         if(a.startsWith(`)`)){
@@ -214,13 +228,26 @@ const compp=(code):string=>{
             return "";
         }
     }
-    if(returnText===""){returnText=comright(`(<data1>)<data2>?<data3>`,`if(<data2><data1>)<data3>`);}
-    if(returnText===""){returnText=comright(`샌즈하기<data1>`,`let <data1>`);}
-    if(returnText===""){returnText=comright(`말(<data1>)`,`console.log(<data1>)`);}
-    if(returnText===""){returnText=comright(`while(<data1>)<data2>{`,`while(<data2><data1>){`);}
+    if(returnText===""){returnText=comright(`(<data1>)<data2>?<data3>{`,`if(<data2><data1>)<data3>{`);} //if
+    if(returnText===""){returnText=comright(`샌즈하기<data1>`,`let <data1>`);}  //선언
+    if(returnText===""){returnText=comright(`말(<data1>)`,`console.log(<data1>)`);} //출력
+    if(returnText===""){returnText=comright(`while(<data1>)<data2>{`,`while(<data2><data1>){`);} //와일
+    if(returnText===""){returnText=comright(`샌즈선언<data1>(<data2>){`,`function <data1>(<data2>){`);} //샌즈선언
     if(returnText===""){returnText=codeSTR;}
     return returnText;
 }
 comp(`
-//write code
+샌즈선언 샌즈의인덱스오브하기와!샌즈의배열값,샌즈의문자값아시는구나 그럼 
+    샌즈하기 샌즈의i값은0
+    샌즈하기 샌즈의returndata값은false
+    샌즈와의전투 와!샌즈의i값<은샌즈의배열값의length아시는구나 그럼
+        와!샌즈의배열값[샌즈의i값]은는샌즈의문자값 아시는구나 그게 가능할 거라 생각해? 그럼
+        샌즈의returndata값은 샌즈의i값
+        터어얼렸구나
+        그래
+        샌즈의i값더하기는1
+    그래
+    의지 샌즈의returndata값
+그래
+샌즈의말하기와!샌즈의인덱스오브하기와!샌즈의[0,3,4]값,샌즈의3값아시는구나아시는구나
 `);
