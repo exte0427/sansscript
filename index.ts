@@ -42,12 +42,12 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
     }
     else if(test(`그럼`)!=0){
         j=test(`그럼`);
-        str="{\n";
+        str="{";
         is="then";
     }
     else if(test(`그래`)!=0){
         j=test(`그래`);
-        str="\n}";
+        str="}";
         is="end";
     }
     else if(test(`\n`)!=0){
@@ -114,6 +114,10 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         j=test(`몰라요`);
         str="!";
         is="not";
+    }else if(test(`불러오기`)!=0){
+        j=test(`불러오기`);
+        str="require";
+        is="import";
     }else if(test(`샌즈의`)!=0){
         j=test(`샌즈의`);
         let strs="";
@@ -149,6 +153,14 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         j=test(`끗`);
         str="]";
         is="]";
+    }else if(test(`새로운`)!=0){
+        j=test(`새로운`);
+        str="new ";
+        is="new";
+    }else if(test(`실행`)!=0){
+        j=test(`실행`);
+        str="=> ";
+        is="=>";
     }
     //끝
     else{
@@ -176,6 +188,7 @@ const comp=code=>{
         }
     }
     try{
+        console.log(JScode);
         eval(JScode);
     }catch(err){
         console.log(JScode);
@@ -249,17 +262,15 @@ const compp=(code):string=>{
     return returnText;
 }
 comp(`
-샌즈선언 샌즈의인덱스오브하기와!샌즈의배열값,샌즈의문자값아시는구나 그럼 
-    샌즈하기 샌즈의i값은0
-    샌즈하기 샌즈의returndata값은false
-    샌즈와의전투 와!샌즈의i값<은샌즈의배열값의길이아시는구나 그럼
-        와!샌즈의배열값 배열샌즈의i값끗은는샌즈의문자값 아시는구나 그게 가능할 거라 생각해? 그럼
-        샌즈의returndata값은 샌즈의i값
-        터어얼렸구나
-        그래
-        샌즈의i값더하기는1
+샌즈하기 샌즈의디코값은 불러오기와!헤,discord.js친구아시는구나
+샌즈하기 샌즈의클라이언트값은 새로운 샌즈의디코값의Client와!아시는구나
+샌즈의클라이언트값의샌즈의once값 와! 헤,ready친구, 와!아시는구나 실행 그럼
+    샌즈의말하기와!헤,ready!친구아시는구나
+그래아시는구나
+샌즈의클라이언트값의샌즈의on값와!헤,message친구,샌즈의message값 실행 그럼
+    와!샌즈의message하기의content은는헤,와친구아시는구나 그게 가능할 거라 생각해? 그럼
+        샌즈의message하기의channel의send와!헤,아시는구나친구아시는구나
     그래
-    의지 샌즈의returndata값
-그래
-샌즈의말하기와!샌즈의인덱스오브하기와!배열0,3,4끗,샌즈의3값아시는구나아시는구나
+그래 아시는구나
+샌즈의클라이언트값의샌즈의login값와!헤,NzM3MjkzOTM5ODU3NDI0NDM0.Xx7QfQ.px-XfopXLpNn43R1mNj5tyEKbcg친구아시는구나
 `);

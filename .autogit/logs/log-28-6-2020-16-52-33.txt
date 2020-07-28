@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jul 28 2020 16:52:33 GMT+0900 (Korean Standard Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-28-6-2020-16-22-26.txt
+
+
+Deleted files:
+
+
+Renamed files:
