@@ -222,5 +222,5 @@ const compp=(code):string=>{
     return returnText;
 }
 comp(`
-샌즈의말하기와!샌즈의a하기와!샌즈의a하기와!아시는구나아시는구나아시는구나
+//write code
 `);
