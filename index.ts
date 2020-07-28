@@ -136,6 +136,19 @@ const pather=(codeList:string[],i:number):{type:string,str:string,i:number}=>{
         j=test(`의`);
         str=".";
         is="and";
+    }else if(test(`길이`)!=0){
+        j=test(`길이`);
+        str="length";
+        is="length";
+    }
+    else if(test(`배열`)!=0){
+        j=test(`배열`);
+        str="[";
+        is="[";
+    }else if(test(`끗`)!=0){
+        j=test(`끗`);
+        str="]";
+        is="]";
     }
     //끝
     else{
@@ -163,7 +176,6 @@ const comp=code=>{
         }
     }
     try{
-        console.log(JScode)
         eval(JScode);
     }catch(err){
         console.log(JScode);
@@ -240,8 +252,8 @@ comp(`
 샌즈선언 샌즈의인덱스오브하기와!샌즈의배열값,샌즈의문자값아시는구나 그럼 
     샌즈하기 샌즈의i값은0
     샌즈하기 샌즈의returndata값은false
-    샌즈와의전투 와!샌즈의i값<은샌즈의배열값의length아시는구나 그럼
-        와!샌즈의배열값[샌즈의i값]은는샌즈의문자값 아시는구나 그게 가능할 거라 생각해? 그럼
+    샌즈와의전투 와!샌즈의i값<은샌즈의배열값의길이아시는구나 그럼
+        와!샌즈의배열값 배열샌즈의i값끗은는샌즈의문자값 아시는구나 그게 가능할 거라 생각해? 그럼
         샌즈의returndata값은 샌즈의i값
         터어얼렸구나
         그래
@@ -249,5 +261,5 @@ comp(`
     그래
     의지 샌즈의returndata값
 그래
-샌즈의말하기와!샌즈의인덱스오브하기와!샌즈의[0,3,4]값,샌즈의3값아시는구나아시는구나
+샌즈의말하기와!샌즈의인덱스오브하기와!배열0,3,4끗,샌즈의3값아시는구나아시는구나
 `);

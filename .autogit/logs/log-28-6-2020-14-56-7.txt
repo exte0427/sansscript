@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Tue Jul 28 2020 14:56:07 GMT+0900 (Korean Standard Time)
+------------------------------------------------------
+
+Modified files:
+* index.ts
+
+
+Created files:
+* .autogit/autogit.json
+
+
+Deleted files:
+
+
+Renamed files:
